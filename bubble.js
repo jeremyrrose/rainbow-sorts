@@ -1,4 +1,4 @@
-const Regenbogler = require('./index.js')
+const Regenbogler = require('regenbogler')
 const {timeout, wave, inputArr} = require('./config.js')
 const slow = process.argv.includes("slow")
 const message =  

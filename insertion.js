@@ -1,4 +1,4 @@
-const Regenbogler = require('./index.js')
+const Regenbogler = require('regenbogler')
 const {timeout, wave, inputArr} = require('./config.js')
 const message =  
 "\033[2J\nI N S E R T I O N  S O R T:" +
