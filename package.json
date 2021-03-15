@@ -1,0 +1,25 @@
+{
+  "name": "rainbow-sorts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js",
+    "bubble" : "node bubble.js", 
+    "insertion": "node insertion.js",
+    "merge": "node merge.js",
+    "quick": "node quick.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyrrose/regenbogler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremyrrose/regenbogler/issues"
+  },
+  "homepage": "https://github.com/jeremyrrose/regenbogler#readme"
+}

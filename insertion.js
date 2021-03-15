@@ -1,5 +1,5 @@
 const Regenbogler = require('./index.js')
-const {timeout, wave, numsArr, alphaArr, sentenceArr} = require('./config.js')
+const {timeout, wave, inputArr} = require('./config.js')
 const message =  
 "\033[2J\nI N S E R T I O N  S O R T:" +
 "\n\n\n"
@@ -46,5 +46,4 @@ const insertion = async (arr) => {
     return arr
 }
 
-insertion(alphaArr.sort(()=>Math.random() - .5))
-// insertion(numsArr)
+insertion(inputArr)

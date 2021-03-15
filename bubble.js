@@ -1,5 +1,5 @@
 const Regenbogler = require('./index.js')
-const {timeout, wave, numsArr, alphaArr, sentenceArr} = require('./config.js')
+const {timeout, wave, inputArr} = require('./config.js')
 const flipCheck = process.argv.includes("optimize")
 const message =  
 "\033[2J\nB U B B L E  S O R T:" +
@@ -37,10 +37,17 @@ const bubbler = async arr => {
         if (flipCheck &&!flip) {
             return arr
         }
+    }            
+    // for output
+    await new Promise(resolve => setTimeout(resolve, timeout))
+    if (!wave) { 
+        console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}`))
+    } else {
+        console.log(bow.string(arr, j))
     }
+    // end output
 
     return arr
 }
 
-bubbler([...alphaArr].sort(() => Math.random() - .5))
-// bubbler(sentenceArr)
+bubbler(inputArr)

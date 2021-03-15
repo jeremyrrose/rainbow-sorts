@@ -1,5 +1,5 @@
 const Regenbogler = require('./index.js')
-const {timeout, wave, numsArr, alphaArr, sentenceArr} = require('./config.js')
+const {timeout, wave, inputArr} = require('./config.js')
 const message =  
 "\033[2J\nM E R G E  S O R T:" +
 "\n\n\n"
@@ -62,5 +62,5 @@ const merge = async (left, right, bow) => {
     return [...result, ...left, ...right]
 }
 
-const bow = new Regenbogler(alphaArr.sort(()=>Math.random() - .5), true, message)
+const bow = new Regenbogler(inputArr, true, message)
 mergeSort(bow.orig, bow)

@@ -1,5 +1,5 @@
 const Regenbogler = require('./index.js')
-const {timeout, wave, numsArr, alphaArr, sentenceArr} = require('./config.js')
+const {timeout, wave, inputArr} = require('./config.js')
 const message =  
 "\033[2J\nQ U I C K  S O R T:" +
 "\n\n\n"
@@ -79,5 +79,5 @@ const quick = async (arr, bow) => {
 
 }
 
-const bow = new Regenbogler(alphaArr.sort(()=>Math.random() - .5), true, message)
+const bow = new Regenbogler(inputArr, true, message)
 quick(bow.arr, bow)
