@@ -1,5 +1,5 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr} = require('./config.js')
+const {timeout, wave, inputArr} = require('../config.js')
 const message =  
 "\033[2J\nM E R G E  S O R T:" +
 "\n\n\n"

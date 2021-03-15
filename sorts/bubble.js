@@ -1,5 +1,5 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr} = require('./config.js')
+const {timeout, wave, inputArr} = require('../config.js')
 const slow = process.argv.includes("slow")
 const message =  
 "\033[2J\nB U B B L E  S O R T:" +
