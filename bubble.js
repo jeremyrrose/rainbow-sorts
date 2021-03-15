@@ -1,6 +1,6 @@
 const Regenbogler = require('./index.js')
 const {timeout, wave, inputArr} = require('./config.js')
-const flipCheck = process.argv.includes("optimize")
+const slow = process.argv.includes("slow")
 const message =  
 "\033[2J\nB U B B L E  S O R T:" +
 "\n\n\n"
@@ -34,7 +34,7 @@ const bubbler = async arr => {
             ops++
         }
 
-        if (flipCheck &&!flip) {
+        if (!slow && !flip) {
             return arr
         }
     }            
@@ -43,7 +43,7 @@ const bubbler = async arr => {
     if (!wave) { 
         console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}`))
     } else {
-        console.log(bow.string(arr, j))
+        console.log(bow.string(arr))
     }
     // end output
 
