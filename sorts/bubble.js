@@ -15,7 +15,7 @@ const bubbler = async arr => {
 
         let flip = false
 
-        for (let j=0; j < arr.length - 1 - i; j++) {
+        for (let j=0; j < (slow ? arr.length - 1 : arr.length - 1 - i); j++) {
             
             // for output
             await new Promise(resolve => setTimeout(resolve, timeout))
