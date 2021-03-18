@@ -3,7 +3,7 @@
 ### *A suite of colorful illustrations for commonly used sorting algorithms*
  
 
-![Standard View](./assets/quicksort480.gif)
+![Standard View](./assets/quick480.gif)
 
 ## Overview
 
