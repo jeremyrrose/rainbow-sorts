@@ -1,15 +1,16 @@
 # Rainbow Sorts
 
 ### *A suite of colorful illustrations for commonly used sorting algorithms*
+ 
 
-![Standard View](./assets/standard.png)
+![Standard View](./assets/quicksort480.gif)
 
 ## Overview
 
-Rainbow Sorts is a Node.js application built to offer a visual complement to instruction on sorting algorithms.
+Rainbow Sorts is a modest Node.js application built to offer a visual complement to instruction on sorting algorithms.
 
 ## Usage
-Run `npm install` to install dependencies.
+Run `npm i` to install dependencies.
 
 Then run `npm start` for directions or use `npm run SORT TIMEOUT OPTIONS`.
 
