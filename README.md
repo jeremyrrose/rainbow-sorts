@@ -1,4 +1,4 @@
-# Rainbow Sorts
+# :rainbow: Rainbow Sorts
 
 ### *A suite of colorful visualizations for commonly used sorting algorithms*
  
