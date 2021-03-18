@@ -40,8 +40,16 @@ const mergeSort = async (arr, bow) => {
 
 const merge = async (left, right, bow) => {
     merges++ // for output
+    await new Promise(resolve => setTimeout(resolve, timeout))
+    if (!wave) {
+        console.log(bow.print(["<<", ...left, "||", ...right], false, `\n\ntotal steps: ${ops}\nsplits ${splits}; merges ${merges}`))
+    } else {
+        console.log(bow.string(["<<", ...left, "||", ...right]))
+    }
+    // end output
 
     const result = []
+
     while (left.length && right.length) {
         if (left[0] < right[0]) {
             result.push(left.shift())
