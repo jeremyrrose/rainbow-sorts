@@ -1,6 +1,6 @@
 # Rainbow Sorts
 
-### *A suite of colorful illustrations for commonly used sorting algorithms*
+### *A suite of colorful visualizations for commonly used sorting algorithms*
  
 
 ![Standard View](./assets/quick480.gif)
@@ -25,6 +25,15 @@ If the first command line argument after the sort is an integer, Rainbow Sorts w
 
 ### View options
 * `wave`
+
+### Input array options
+* `words`
+* `nums`
+
+### Examples
+* `npm run quick` : quickSort, 400ms timeout (default), letters array (default)
+* `npm run bubble 180 nums` : bubble sort, 180ms timeout, number array
+* `npm run merge 20 wave` : merge sort, 20ms timeout, letters array (default), wave view
 
 ## Views
 
