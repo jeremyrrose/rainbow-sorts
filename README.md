@@ -12,7 +12,12 @@ Rainbow Sorts is a modest Node.js application built to offer a visual complement
 ## Usage
 Run `npm i` to install dependencies.
 
-Then run `npm start` for directions or use `npm run SORT TIMEOUT OPTIONS`.
+Then run `npm start` for directions or use `npm run SORT [ TIMEOUT [ OPTIONS ]]`.
+
+### Examples
+* `npm run quick` : quickSort, 400ms timeout (default), letters array (default)
+* `npm run bubble 180 nums` : bubble sort, 180ms timeout, number array
+* `npm run merge 20 wave` : merge sort, 20ms timeout, letters array (default), wave view
 
 ### Sort options
 * `bubble`
@@ -29,11 +34,6 @@ If the first command line argument after the sort is an integer, Rainbow Sorts w
 ### Input array options
 * `words`
 * `nums`
-
-### Examples
-* `npm run quick` : quickSort, 400ms timeout (default), letters array (default)
-* `npm run bubble 180 nums` : bubble sort, 180ms timeout, number array
-* `npm run merge 20 wave` : merge sort, 20ms timeout, letters array (default), wave view
 
 ## Views
 
