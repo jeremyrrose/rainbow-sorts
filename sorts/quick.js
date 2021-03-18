@@ -92,8 +92,9 @@ if (wave && lay) {
     console.log(bow.message)
 }
 quick(bow.arr, bow)
-.then(() => {
-    if (wave) {
-        console.log(`\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`)
-    }
-})
+    .then((res) => {
+        console.log(`\n${bow.string(res)}`)
+        if (wave) {
+            console.log(`\ntotal comparisons: ${comparisons}\nsplits ${splits}`)
+        }
+    })

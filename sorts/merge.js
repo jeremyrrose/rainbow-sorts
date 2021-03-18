@@ -85,8 +85,9 @@ if (wave && lay) {
     console.log(bow.message)
 }
 mergeSort(bow.orig, bow)
-.then (() => {
-    if (wave) {
-    console.log(`\n\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`)
-    }
-})
+    .then((res) => {
+        console.log(`\n${bow.string(res)}`)
+        if (wave) {
+        console.log(`\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`)
+        }
+    })
