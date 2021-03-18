@@ -1,13 +1,24 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr} = require('../config.js')
+const {timeout, wave, inputArr, lay} = require('../config.js')
 const message =  
-"\033[2J\nM E R G E  S O R T:" +
-"\n\n\n"
+"\033[2J\nM E R G E  S O R T:" 
+
+const explanation = 
+`
+\x1b[38;2;128;128;128m
+stage 1: splits ( || ) each array roughly in half
+then splits recursively until arrays have length 1
+at which point they are sorted by default!
+
+stage 2: merges ( << ) two sorted arrays by comparing the first element in each
+and moving the winner of the comparison into a new sorted array
+until one of the arrays is empty
+`
 
 // for output
 let splits = 0
 let merges = 0
-let ops = 0
+let comparisons = 0
 // end output
 
 
@@ -25,10 +36,9 @@ const mergeSort = async (arr, bow) => {
     const right = arr.slice(center)
 
     // for output
-    ops++ 
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print([...left, "||", ...right], false, `\n\ntotal steps: ${ops}\nsplits ${splits}; merges ${merges}`))
+        console.log(bow.print([...left, "||", ...right], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`))
     } else {
         console.log(bow.string([...left, "||", ...right]))
     }
@@ -42,7 +52,7 @@ const merge = async (left, right, bow) => {
     merges++ // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print(["<<", ...left, "||", ...right], false, `\n\ntotal steps: ${ops}\nsplits ${splits}; merges ${merges}`))
+        console.log(bow.print(["<<", ...left, "||", ...right], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`))
     } else {
         console.log(bow.string(["<<", ...left, "||", ...right]))
     }
@@ -58,10 +68,10 @@ const merge = async (left, right, bow) => {
         }
 
         // for output
-        ops++
+        comparisons++
         await new Promise(resolve => setTimeout(resolve, timeout))
         if (!wave) {
-            console.log(bow.print([...result, "<<", ...left, "||", ...right], false, `\n\ntotal steps: ${ops}\nsplits ${splits}; merges ${merges}`))
+            console.log(bow.print([...result, "<<", ...left, "||", ...right], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`))
         } else {
             console.log(bow.string([...result, "<<", ...left, "||", ...right]))
         }
@@ -70,5 +80,13 @@ const merge = async (left, right, bow) => {
     return [...result, ...left, ...right]
 }
 
-const bow = new Regenbogler(inputArr, true, message)
+const bow = new Regenbogler(inputArr, true, message + (lay ? explanation : "") + "\n\n")
+if (wave && lay) {
+    console.log(bow.message)
+}
 mergeSort(bow.orig, bow)
+.then (() => {
+    if (wave) {
+    console.log(`\n\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`)
+    }
+})

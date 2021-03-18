@@ -1,8 +1,16 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr} = require('../config.js')
+const {timeout, wave, inputArr, lay} = require('../config.js')
 const message =  
-"\033[2J\nQ U I C K  S O R T:" +
-"\n\n\n"
+"\033[2J\nQ U I C K  S O R T"
+const explanation = 
+`
+\x1b[38;2;128;128;128m
+chooses a || pivot || from each array
+then arranges all elements to the left or right of the pivot
+and recursively sorts the resulting left and right arrays
+by the same method until all arrays have length 1
+at which point they can be combined in order
+`
 
 let splits = 0
 let comparisons = 0
@@ -18,7 +26,7 @@ const quick = async (arr, bow) => {
     splits++
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print(arr, false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
+        console.log(bow.print(arr, false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`))
     } else {
         console.log(bow.string(arr))
     }
@@ -31,7 +39,7 @@ const quick = async (arr, bow) => {
     // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print(["||", pivot, "||", "?:", ...arr], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
+        console.log(bow.print(["||", pivot, "||", "?:", ...arr], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`))
     } else {
         console.log(bow.string(["||", pivot, "||", "?:", ...arr]))
     }
@@ -48,7 +56,7 @@ const quick = async (arr, bow) => {
         // for output
         await new Promise(resolve => setTimeout(resolve, timeout))
         if (!wave) {
-            console.log(bow.print([...left, "||", pivot, "||", ...right, "?:", ...arr], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))   
+            console.log(bow.print([...left, "||", pivot, "||", ...right, "?:", ...arr], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`))   
         } else {
             console.log(bow.string([...left, "||", pivot, "||", ...right, "?:", ...arr]))
         } 
@@ -58,7 +66,7 @@ const quick = async (arr, bow) => {
     // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print([...left, "||", pivot, "||", ...right], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
+        console.log(bow.print([...left, "||", pivot, "||", ...right], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`))
     } else {
         console.log(bow.string([...left, "||", pivot, "||", ...right]))
     }
@@ -69,7 +77,7 @@ const quick = async (arr, bow) => {
     // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print([...result[0],"||",pivot,"||",...result[1]], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
+        console.log(bow.print([...result[0],"||",pivot,"||",...result[1]], false, `\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`))
     } else {
         console.log(bow.string([...result[0],"||",pivot,"||",...result[1]]))
     }
@@ -79,5 +87,13 @@ const quick = async (arr, bow) => {
 
 }
 
-const bow = new Regenbogler(inputArr, true, message)
+const bow = new Regenbogler(inputArr, true, message + (lay ? explanation : "") + "\n\n")
+if (wave && lay) {
+    console.log(bow.message)
+}
 quick(bow.arr, bow)
+.then(() => {
+    if (wave) {
+        console.log(`\n\ntotal comparisons: ${comparisons}\nsplits ${splits}`)
+    }
+})
