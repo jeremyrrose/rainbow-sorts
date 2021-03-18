@@ -1,4 +1,4 @@
-const timeout = parseInt(process.argv[2]) || 200
+const timeout = parseInt(process.argv[2]) || 400
 const wave = process.argv.includes('wave')
 
 const numsArr = [ 1, 1, 93, 6, 4, 1, 1, 1834, 2, 4, 7, 12, 1, 5, 3, 66, 12, 7, 3 ].sort(() => Math.random() - .5)
