@@ -24,16 +24,16 @@ const quick = async (arr, bow) => {
     }
     // end output
     
-    const pivot = arr.pop()
+    const pivot = arr.shift()
     const left = []
     const right = []
 
     // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
-        console.log(bow.print([...left, "||", pivot, "||", ...right, "?:", ...arr], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
+        console.log(bow.print(["||", pivot, "||", "?:", ...arr], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
     } else {
-        console.log(bow.string([...left, "||", pivot, "||", ...right, "?:", ...arr]))
+        console.log(bow.string(["||", pivot, "||", "?:", ...arr]))
     }
     // end output
     
