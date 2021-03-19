@@ -1,13 +1,26 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr} = require('../config.js')
+const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
 const message =  
-"\033[2J\nI N S E R T I O N  S O R T:" +
-"\n\n\n"
+"\033[2J\nI N S E R T I O N  S O R T" 
+
+const explanation = 
+`
+\x1b${noteColor}
+steps through the array once, starting with index 1;
+the selected element is compared with each element to its left
+and each of these elements is shifted one index to the right
+until the selected element encounters an element of lesser value 
+and settles into place
+`
 
 const insertion = async (arr) => {
 
     // for output
-    const bow = new Regenbogler(arr, true, message)
+    const bow = new Regenbogler(arr, true, message + (lay ? explanation : "") + "\n\n")
+    if (wave && lay) {
+        console.log(bow.message)
+    }
+    
     let ops = 0
 
     for (let i = 1; i < arr.length; i++) {
