@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/jeremyrrose/rainbow-sorts#readme",
   "dependencies": {
-    "regenbogler": "^1.0.0"
+    "regenbogler": "^1.0.1"
   }
 }
