@@ -1,13 +1,26 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr} = require('../config.js')
+const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
 const slow = process.argv.includes("slow")
 const message =  
-"\033[2J\nB U B B L E  S O R T:" +
-"\n\n\n"
+"\033[2J\nB U B B L E  S O R T" 
+
+const explanation = 
+`
+\x1b${noteColor}
+loops repeatedly through an array, 
+comparing each element to the element on its right;
+if the first element is higher, they are swapped in place.
+this is done over and over
+and over and over and over
+until every element is arranged.
+`
 
 const bubbler = async arr => {
 
-    const bow = new Regenbogler(arr, true, message)
+    const bow = new Regenbogler(arr, true, message + (lay ? explanation : "") + "\n\n")
+    if (wave && lay) {
+        console.log(bow.message)
+    }
 
     let ops = 0
 
@@ -35,15 +48,25 @@ const bubbler = async arr => {
         }
 
         if (!slow && !flip) {
+
+            await new Promise(resolve => setTimeout(resolve, timeout))
+            if (!wave) { 
+                console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}\n`))
+            } else {
+                console.log(bow.string(arr))
+                console.log(`\n\ntotal steps: ${ops}`)
+            }
+
             return arr
         }
     }            
     // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) { 
-        console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}`))
+        console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}\n`))
     } else {
         console.log(bow.string(arr))
+        console.log(`\ntotal steps: ${ops}\n`)
     }
     // end output
 

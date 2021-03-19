@@ -1,10 +1,10 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr, lay} = require('../config.js')
+const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
 const message =  
 "\033[2J\nQ U I C K  S O R T"
 const explanation = 
 `
-\x1b[38;2;128;128;128m
+\x1b${noteColor}
 chooses a || pivot || from each array
 then arranges all elements to the left or right of the pivot
 and recursively sorts the resulting left and right arrays
@@ -84,7 +84,6 @@ const quick = async (arr, bow) => {
     // end output
 
     return [...result[0], pivot, ...result[1]]
-
 }
 
 const bow = new Regenbogler(inputArr, true, message + (lay ? explanation : "") + "\n\n")
@@ -93,8 +92,8 @@ if (wave && lay) {
 }
 quick(bow.arr, bow)
     .then((res) => {
-        console.log(`\n${bow.string(res)}`)
         if (wave) {
-            console.log(`\ntotal comparisons: ${comparisons}\nsplits ${splits}`)
+            console.log(`\n${bow.string(res)}`)
+            console.log(`\ntotal comparisons: ${comparisons}\nsplits ${splits}\n`)
         }
     })

@@ -1,11 +1,11 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr, lay} = require('../config.js')
+const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
 const message =  
 "\033[2J\nM E R G E  S O R T:" 
 
 const explanation = 
 `
-\x1b[38;2;128;128;128m
+\x1b${noteColor}
 stage 1: splits ( || ) each array roughly in half
 then splits recursively until arrays have length 1
 at which point they are sorted by default!
@@ -86,8 +86,8 @@ if (wave && lay) {
 }
 mergeSort(bow.orig, bow)
     .then((res) => {
-        console.log(`\n${bow.string(res)}`)
         if (wave) {
+        console.log(`\n${bow.string(res)}`)
         console.log(`\ntotal comparisons: ${comparisons}\nsplits ${splits}; merges ${merges}`)
         }
     })
