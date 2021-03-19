@@ -1,5 +1,5 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
+const {timeout, wave, inputArr, notes, noteColor} = require('../config.js')
 const slow = process.argv.includes("slow")
 const message =  
 "\033[2J\nB U B B L E  S O R T" 
@@ -17,8 +17,8 @@ until every element is arranged.
 
 const bubbler = async arr => {
 
-    const bow = new Regenbogler(arr, true, message + (lay ? explanation : "") + "\n\n")
-    if (wave && lay) {
+    const bow = new Regenbogler(arr, true, message + (notes ? explanation : "") + "\n\n")
+    if (wave && notes) {
         console.log(bow.message)
     }
 

@@ -2,7 +2,7 @@
 // command line options
 const timeout = parseInt(process.argv[2]) || 400
 const wave = process.argv.includes('wave')
-const lay = process.argv.includes('lay')
+const notes = process.argv.includes('notes')
 
 // input arrays
 const numsArr = [ 1, 1, 93, 6, 4, 1, 1, 1834, 2, 4, 7, 12, 1, 5, 3, 66, 12, 7, 3 ].sort(() => Math.random() - .5)
@@ -18,6 +18,6 @@ module.exports = {
     timeout,
     wave,
     inputArr,
-    lay,
+    notes,
     noteColor
 }

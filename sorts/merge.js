@@ -1,5 +1,5 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
+const {timeout, wave, inputArr, notes, noteColor} = require('../config.js')
 const message =  
 "\033[2J\nM E R G E  S O R T:" 
 
@@ -80,8 +80,8 @@ const merge = async (left, right, bow) => {
     return [...result, ...left, ...right]
 }
 
-const bow = new Regenbogler(inputArr, true, message + (lay ? explanation : "") + "\n\n")
-if (wave && lay) {
+const bow = new Regenbogler(inputArr, true, message + (notes ? explanation : "") + "\n\n")
+if (wave && notes) {
     console.log(bow.message)
 }
 mergeSort(bow.orig, bow)

@@ -1,5 +1,5 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
+const {timeout, wave, inputArr, notes, noteColor} = require('../config.js')
 const message =  
 "\033[2J\nI N S E R T I O N  S O R T" 
 
@@ -16,8 +16,8 @@ and settles into place
 const insertion = async (arr) => {
 
     // for output
-    const bow = new Regenbogler(arr, true, message + (lay ? explanation : "") + "\n\n")
-    if (wave && lay) {
+    const bow = new Regenbogler(arr, true, message + (notes ? explanation : "") + "\n\n")
+    if (wave && notes) {
         console.log(bow.message)
     }
     

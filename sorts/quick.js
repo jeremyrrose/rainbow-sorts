@@ -1,5 +1,5 @@
 const Regenbogler = require('regenbogler')
-const {timeout, wave, inputArr, lay, noteColor} = require('../config.js')
+const {timeout, wave, inputArr, notes, noteColor} = require('../config.js')
 const message =  
 "\033[2J\nQ U I C K  S O R T"
 const explanation = 
@@ -86,8 +86,8 @@ const quick = async (arr, bow) => {
     return [...result[0], pivot, ...result[1]]
 }
 
-const bow = new Regenbogler(inputArr, true, message + (lay ? explanation : "") + "\n\n")
-if (wave && lay) {
+const bow = new Regenbogler(inputArr, true, message + (notes ? explanation : "") + "\n\n")
+if (wave && notes) {
     console.log(bow.message)
 }
 quick(bow.arr, bow)
