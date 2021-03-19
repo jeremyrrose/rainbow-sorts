@@ -1,7 +1,7 @@
 const Regenbogler = require('regenbogler')
 const {timeout, wave, inputArr, notes, noteColor} = require('../config.js')
 const message =  
-"\033[2J\nM E R G E  S O R T:" 
+"\033[2J\nM E R G E  S O R T" 
 
 const explanation = 
 `
