@@ -12,7 +12,7 @@ const sentenceArr = "the quick brown fox jumps over the lazy dog et lorem ipsum 
 const inputArr = process.argv.includes("words") || process.argv.includes("nums") ? process.argv.includes("words") ? sentenceArr : numsArr : alphaArr
 
 // text color for layperson's notes
-const noteColor = `[38;5;245m`
+const noteColor = `[38;5;60m`
 
 module.exports = {
     timeout,
